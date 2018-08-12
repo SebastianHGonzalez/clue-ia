@@ -41,28 +41,35 @@ data Suggestion = MkSuggestion Player Accusation (Maybe Player)
 figureOf :: Card -> Figure
 figureOf (MkCard f _) = f
 
+makeCard :: CardType -> Figure -> Card
+makeCard t f = MkCard f t
+
+makeSuspectCard = makeCard SuspectType
+makePlaceCard = makeCard PlaceType
+makeWeaponCard = makeCard WeaponType
+
 cards = [
-            MkCard White SuspectType,
-            MkCard Blue SuspectType,
-            MkCard Green SuspectType,
-            MkCard Orange SuspectType,
-            MkCard Yellow SuspectType,
-            MkCard Red SuspectType,
-            MkCard Study PlaceType,
-            MkCard Kitchen PlaceType,
-            MkCard Library PlaceType,
-            MkCard DiningRoom PlaceType,
-            MkCard LivingRoom PlaceType,
-            MkCard Basement PlaceType,
-            MkCard GamesRoom PlaceType,
-            MkCard BilliardRoom PlaceType,
-            MkCard StartRoom PlaceType,
-            MkCard Pistol WeaponType,
-            MkCard Knife WeaponType,
-            MkCard Chandelier WeaponType,
-            MkCard Pipe WeaponType,
-            MkCard Rope WeaponType,
-            MkCard Wrench WeaponType
+            makeSuspectCard White,
+            makeSuspectCard Blue,
+            makeSuspectCard Green,
+            makeSuspectCard Orange,
+            makeSuspectCard Yellow,
+            makeSuspectCard Red,
+            makePlaceCard Study,
+            makePlaceCard Kitchen,
+            makePlaceCard Library,
+            makePlaceCard DiningRoom,
+            makePlaceCard LivingRoom,
+            makePlaceCard Basement,
+            makePlaceCard GamesRoom,
+            makePlaceCard BilliardRoom,
+            makePlaceCard StartRoom,
+            makeWeaponCard Pistol,
+            makeWeaponCard Knife,
+            makeWeaponCard Chandelier,
+            makeWeaponCard Pipe,
+            makeWeaponCard Rope,
+            makeWeaponCard Wrench
         ]
 
 instance Eq Figure where

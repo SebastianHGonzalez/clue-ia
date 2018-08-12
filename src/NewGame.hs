@@ -3,30 +3,6 @@ import Clue
 import Game
 import Data.List
 
--- TODO: SHUFFLE
-shuffle :: [a] -> [a]
-shuffle a = a
-
-shuffledCards :: [Card]
-shuffledCards = shuffle cards
-
--- unsafe
--- explodes if card with cardtype not in [card]
-takeCard :: CardType -> [Card] -> Card
-takeCard PlaceType (c@(MkCard f PlaceType):cs) = c
-takeCard SuspectType (c@(MkCard f SuspectType):cs) = c
-takeCard WeaponType (c@(MkCard f WeaponType):cs) = c
-takeCard t (c:cs) = takeCard t cs
-
-takePlaceCard :: [Card] -> Card
-takePlaceCard = takeCard PlaceType
-
-takeSuspectCard :: [Card] -> Card
-takeSuspectCard = takeCard SuspectType
-
-takeWeaponCard :: [Card] -> Card
-takeWeaponCard = takeCard WeaponType
-
 dealCardsAmmount :: [Card] -> Int -> [Player]
 dealCardsAmmount [] amount = []
 dealCardsAmmount cs amount = let player = take amount cs
