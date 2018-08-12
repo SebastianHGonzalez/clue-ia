@@ -10,6 +10,8 @@ shuffle a = a
 shuffledCards :: [Card]
 shuffledCards = shuffle cards
 
+-- unsafe
+-- explodes if card with cardtype not in [card]
 takeCard :: CardType -> [Card] -> Card
 takeCard PlaceType (c@(MkCard f PlaceType):cs) = c
 takeCard SuspectType (c@(MkCard f SuspectType):cs) = c
