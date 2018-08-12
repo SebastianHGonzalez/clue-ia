@@ -38,6 +38,9 @@ data Accusation = MkAccusation Place Suspect Weapon
 
 data Suggestion = MkSuggestion Player Accusation (Maybe Player)
 
+figureOf :: Card -> Figure
+figureOf (MkCard f _) = f
+
 cards = [
             MkCard White SuspectType,
             MkCard Blue SuspectType,

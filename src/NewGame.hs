@@ -1,15 +1,7 @@
-module PlayClue ( newGame ) where
+module NewGame ( newGame ) where
 import Clue
+import Game
 import Data.List
-
-type Turn = Suggestion
-
-type ActualResult = Accusation
-
--- cards deal consist of wath the players have and what the actual murder was
-data CardsDeal = MkCardsDeal [Clue.Player] ActualResult
-
-data ClueGame = MkClueGame [Turn] CardsDeal
 
 -- TODO: SHUFFLE
 shuffle :: [a] -> [a]
@@ -32,9 +24,6 @@ takeSuspectCard = takeCard SuspectType
 
 takeWeaponCard :: [Card] -> Card
 takeWeaponCard = takeCard WeaponType
-
-figureOf :: Card -> Figure
-figureOf (MkCard f _) = f
 
 dealCardsAmmount :: [Card] -> Int -> [Player]
 dealCardsAmmount [] amount = []
